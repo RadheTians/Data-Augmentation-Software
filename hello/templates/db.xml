@@ -21,7 +21,7 @@
 
  <item>
       <title>News</title>
-      <link>https://secret-fjord-42008.herokuapp.com/hello/templates/demo.xml</link>
+      <link>https://radhetiwari.herokuapp.com/hello/templates/demo.xml</link>
       <description>And now, all about RDF</description>
     </item>
 </channel>
