@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/addons/p5.sound.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <script src="{% static 'javascript/sketch.js' %}"></script>
+    <meta charset="utf-8" />
+    <title>RadheTians</title>
+  </head>
+  <body >
+    <div class="center content" >
+    
+      <h1>Data Augmentation Tool.</h1> 
+     
+      <form action="upload" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        Upload image file : <input type="file" name="image" onchange="readImageURL(this);" >
+        <br><br>
+        Background image file : <input type="file" name="background" onchange="readBackgroundImageURL(this);" >
+        <br><br>
+        Number of Images : <input type="number" name="count" >
+        <br><br>
+        Rotation range : <input type="range" min="0" max="100" value="50" name="rotation" >
+        <br><br>
+        Width shift range : <input type="range" min="0" max="100" value="50" name="width" >
+        <br><br>
+        Height shift range : <input type="range" min="0" max="100" value="50" name="height" >
+        <br><br>
+        Shear range  : <input type="range" min="0" max="100" value="50" name="shear" >
+        <br><br>
+        Zoom range  : <input type="range" min="0" max="100" value="50" name="zoom" >
+        <br><br>
+        Brightness range  : <input type="range" min="0" max="100" value="50" name="brightness" >
+        <br><br>
+        Horizontal flip  : <input type="radio" name="hflip" value="True" >
+        <br><br>
+        Vertical flip  : <input type="radio" name="vflip" value="True" >
+        <br><br>
+        Label: <input type="text" id="label" name="label"><br>
+        X Min: <input type="number" id="xmin" name="xmin"><br>
+        Y Min: <input type="number" id="ymin" name="ymin"><br>
+        X Max: <input type="number" id="xmax" name="xmax"><br>
+        Y Max: <input type="number" id="ymax" name="ymax"><br>
+       <input type="submit" value="Submit">
+      </form>
+    
+    </div>
+  </body>
+</html>

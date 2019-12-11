@@ -1,0 +1,34 @@
+body {
+    background: rgb(213, 221, 105);
+}
+
+canvas {
+  display: block;
+  margin-top: auto;
+  margin-left: auto;
+}
+.content {
+    max-width: 500px;
+    margin: auto;
+    background: rgb(199, 85, 9);
+    padding: 10px;
+}
+
+.center{
+    margin: 0;
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.data{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+        
