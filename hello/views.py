@@ -46,13 +46,13 @@ def Upload(request):
         #     v_flip = True
         # else:
         #     v_flip = False
-        xmin = request.POST['xmin']
-        ymin = request.POST['ymin']
-        xmax = request.POST['xmax']
-        ymax = request.POST['xmax']
+        xmin = int(request.POST['xmin'])
+        ymin = int(request.POST['ymin'])
+        xmax = int(request.POST['xmax'])
+        ymax = int(request.POST['ymax'])
         label = request.POST['label']
-        anotation_list = [xmin+","+ymin+","+xmax+","+ymax+","+label]
-        print(anotation_list)
+        annotation_list = [[xmin,ymin,xmax,ymax,label]]
+        print(annotation_list)
         fs = FileSystemStorage()
         image = request.FILES['image']
         background = request.FILES['background']
@@ -65,7 +65,7 @@ def Upload(request):
         image_url = input_data_path+"/"+str(image.name)
         background_url = input_data_path+"/"+str(background.name)
         
-        image_augmentation(image_url,background_url,anotation_list)
+        image_augmentation(image_url,background_url,annotation_list)
         # img = np.expand_dims(img.astype('float32')/255, axis=0)
         # datagen, _ = image_generator(img, rotation=rotation, w_shift=width,
         #                              h_shift=height,h_flip=True, v_flip=True,

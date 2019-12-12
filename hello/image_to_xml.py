@@ -25,10 +25,7 @@ def create_labimg_xml(image_path, annotation_list):
     ET.SubElement(annotation, 'segmented').text = '0'
 
     for annot in annotation_list:
-        tmp_annot = annot.split(',')
-        cords, label = tmp_annot[0:-1], tmp_annot[-1]
-        xmin, ymin, xmax, ymax = cords[0], cords[1], cords[2], cords[3]
-
+        xmin, ymin, xmax, ymax, label = annot[0], annot[1], annot[2], annot[3], annot[4]
         object = ET.SubElement(annotation, 'object')
         ET.SubElement(object, 'name').text = label
         ET.SubElement(object, 'pose').text = 'Unspecified'
