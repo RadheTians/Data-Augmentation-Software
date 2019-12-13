@@ -66,10 +66,5 @@ def Upload(request):
         background_url = input_data_path+"/"+str(background.name)
         
         image_augmentation(image_url,background_url,annotation_list)
-        # img = np.expand_dims(img.astype('float32')/255, axis=0)
-        # datagen, _ = image_generator(img, rotation=rotation, w_shift=width,
-        #                              h_shift=height,h_flip=True, v_flip=True,
-        #                              zoom=zoom,shear=shear,brightness_range=[brightness-0.3,brightness+0.3])
-        # image_data_generator(datagen,img,anotation_list,batch_size=count)
 
     return render(request,"home.html")

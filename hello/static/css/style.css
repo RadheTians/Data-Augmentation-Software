@@ -1,5 +1,5 @@
 body {
-    background: rgb(213, 221, 105);
+    background: rgb(243, 82, 82);
 }
 
 canvas {
@@ -8,27 +8,14 @@ canvas {
   margin-left: auto;
 }
 .content {
-    max-width: 500px;
-    margin: auto;
-    background: rgb(199, 85, 9);
-    padding: 10px;
-}
-
-.center{
-    margin: 0;
     position: absolute;
     top: 50%;
-    left: 20%;
+    left: 30%;
+    background: rgb(222, 233, 71);
+    padding: 10px;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
 
-.data{
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 70%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
+
         

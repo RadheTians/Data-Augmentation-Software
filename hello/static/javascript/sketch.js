@@ -12,7 +12,7 @@ function setup() {
     input.class('content');
 }
 function draw() {
-    background(255);
+    //background(255);
     //image(image,0,0);
     //image(background,100,100);
     if (img) {
