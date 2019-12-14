@@ -4,7 +4,7 @@ let xmin=0,ymin=0,xmax=0,ymax=0;
 let xbox,ybox;
 let flag=0;
 function setup() {
-    var canvas = createCanvas(400, 400);
+    var canvas = createCanvas(1000, 1000);
     canvas.doubleClicked(setXY);
     canvas.id('blah');
     input = createFileInput(readImageURL);

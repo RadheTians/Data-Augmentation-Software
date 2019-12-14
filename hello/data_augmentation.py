@@ -3,9 +3,9 @@ import numpy as np
 
 from .image_to_xml import create_labimg_xml
 
-def image_augmentation(image_url, background_url,annotation_list):
+def image_augmentation(image_url, background_url,annotation_list,path):
     raw_image = Data_augmentation(image_url,background_url,annotation_list)
-    raw_image.image_augment('data/',annotation_list[0])
+    raw_image.image_augment(path,annotation_list[0])
     
     
 
@@ -19,7 +19,7 @@ class Data_augmentation:
         self.anotation_list = annotation_list
         for annot in annotation_list:
             self.image = self.image[annot[1]:annot[3],annot[0]:annot[2]]
-        self.background = cv2.resize(self.background , (400, 400)) 
+        self.background = cv2.resize(self.background , (600, 600)) 
     def rotate(self, image, angle=90, scale=1.0):
         w = image.shape[1]
         h = image.shape[0]

@@ -46,13 +46,14 @@ def Upload(request):
         #     v_flip = True
         # else:
         #     v_flip = False
+        path = request.POST['path']
         xmin = int(request.POST['xmin'])
         ymin = int(request.POST['ymin'])
         xmax = int(request.POST['xmax'])
         ymax = int(request.POST['ymax'])
         label = request.POST['label']
         annotation_list = [[xmin,ymin,xmax,ymax,label]]
-        print(annotation_list)
+        
         fs = FileSystemStorage()
         image = request.FILES['image']
         background = request.FILES['background']
@@ -65,6 +66,6 @@ def Upload(request):
         image_url = input_data_path+"/"+str(image.name)
         background_url = input_data_path+"/"+str(background.name)
         
-        image_augmentation(image_url,background_url,annotation_list)
+        image_augmentation(image_url,background_url,annotation_list,path)
 
     return render(request,"home.html")
