@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		{% load static %}
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>Augmented Tool</title>
+		<meta name="description" content="A sidebar menu as seen on the Google Nexus 7 website" />
+		<meta name="keywords" content="google nexus 7 menu, css transitions, sidebar, side menu, slide out menu" />
+		<meta name="author" content="Codrops" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/addons/p5.sound.min.js"></script>
+    	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+		<link rel="shortcut icon" href="../favicon.ico">
+
+    	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/component.css' %}" />
+
+		<script src="{% static 'javascript/modernizr.custom.js' %}"></script>
+		<script src="{% static 'javascript/classie.js' %}"></script>
+		<script src="{% static 'javascript/gnmenu.js' %}"></script>
+		<script src="{% static 'javascript/sketch.js' %}"></script>
+	</head>
+	<body>
+		<div class="container">
+			<ul id="gn-menu" class="gn-menu-main">
+				<li class="gn-trigger">
+					<a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+					<nav class="gn-menu-wrapper">
+						<div class="gn-scroller">
+							<ul class="gn-menu">
+								<li class="gn-search-item">
+									<input placeholder="Number of Images" type="number" class="gn-search">
+									<a class="gn-icon gn-icon-search"><span>Number of Images</span></a>
+								</li>
+								<li>
+									<a class="gn-icon gn-icon-download">Rotation Range</a>
+									<ul class="gn-submenu">
+										<li class="gn-search-item">
+											<input placeholder="Minimum" type="number" class="gn-search">
+											<a class="gn-icon gn-icon-search"><span>Minimum</span></a>
+										</li>
+										<li class="gn-search-item">
+											<input placeholder="Maximum" type="number" class="gn-search">
+											<a class="gn-icon gn-icon-search"><span>Maximum</span></a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a class="gn-icon gn-icon-download">Width Shift Range</a>
+									<ul class="gn-submenu">
+										<li class="gn-search-item">
+											<input placeholder="Minimum" type="number" class="gn-search">
+											<a class="gn-icon gn-icon-search"><span>Minimum</span></a>
+										</li>
+										<li class="gn-search-item">
+											<input placeholder="Maximum" type="number" class="gn-search">
+											<a class="gn-icon gn-icon-search"><span>Maximum</span></a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a class="gn-icon gn-icon-download">Height Shift Range</a>
+									<ul class="gn-submenu">
+										<li class="gn-search-item">
+											<input placeholder="Minimum" type="number" class="gn-search">
+											<a class="gn-icon gn-icon-search"><span>Minimum</span></a>
+										</li>
+										<li class="gn-search-item">
+											<input placeholder="Maximum" type="number" class="gn-search">
+											<a class="gn-icon gn-icon-search"><span>Maximum</span></a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a class="gn-icon gn-icon-download">Shear Range</a>
+									<ul class="gn-submenu">
+										<li class="gn-search-item">
+											<input placeholder="Minimum" type="number" class="gn-search">
+											<a class="gn-icon gn-icon-search"><span>Minimum</span></a>
+										</li>
+										<li class="gn-search-item">
+											<input placeholder="Maximum" type="number" class="gn-search">
+											<a class="gn-icon gn-icon-search"><span>Maximum</span></a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a class="gn-icon gn-icon-download">Zoom Range</a>
+									<ul class="gn-submenu">
+										<li class="gn-search-item">
+											<input placeholder="Minimum" type="number" class="gn-search">
+											<a class="gn-icon gn-icon-search"><span>Minimum</span></a>
+										</li>
+										<li class="gn-search-item">
+											<input placeholder="Maximum" type="number" class="gn-search">
+											<a class="gn-icon gn-icon-search"><span>Maximum</span></a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<a class="gn-icon gn-icon-download">Brightness Range</a>
+									<ul class="gn-submenu">
+										<li class="gn-search-item">
+											<input placeholder="Minimum" type="number" class="gn-search">
+											<a class="gn-icon gn-icon-search"><span>Minimum</span></a>
+										</li>
+										<li class="gn-search-item">
+											<input placeholder="Maximum" type="number" class="gn-search">
+											<a class="gn-icon gn-icon-search"><span>Maximum</span></a>
+										</li>
+									</ul>
+								</li>
+
+								<li>
+									<a class="gn-icon gn-icon-download">Horizontal Flip</a>
+									<ul class="gn-submenu">
+										<li class="gn-search-item">
+											<input type="checkbox" name="hflip" class="gn-search">
+										</li>
+										
+									</ul>
+								</li>
+								<li>
+									<a class="gn-icon gn-icon-download">Vertical Flip</a>
+									<ul class="gn-submenu">
+										<li class="gn-search-item">
+											<input type="checkbox" name="vflip" class="gn-search">
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</nav>
+				</li>
+				
+			</ul>
+			<header>
+				<form action="upload" method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
+					<ul class="label">
+						X Min: <input type="number" id="xmin" name="xmin" class="gn-search">
+						Y Min: <input type="number" id="ymin" name="ymin" class="gn-search">
+						X Max: <input type="number" id="xmax" name="xmax" class="gn-search">
+						Y Max: <input type="number" id="ymax" name="ymax" class="gn-search">
+					</ul>
+					<ul>	
+						IMAGE: <input type="file" name="image" onchange="readImageURL(this);">
+						BACKGROUND: <input type="file" name="background" onchange="readBackgroundImageURL(this);">
+						LABEL: <input type="text" id="label" name="label" class="gn-search">
+						
+					</ul>
+					<ul>
+						PATH: <input type="text" id="path" name="path" class="gn-search">
+						<input type="submit" value="Submit">
+					</ul>
+				</form>
+			</header> 
+		</div>
+		
+		<script>
+			new gnMenu( document.getElementById( 'gn-menu' ) );
+		</script>
+	</body>
+</html>

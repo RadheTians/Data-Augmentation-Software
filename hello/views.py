@@ -4,12 +4,13 @@ from django.core.files.storage import FileSystemStorage
 from .data_augmentation import image_augmentation
 # Create your views here.
 def index(request):
-    return render(request, "home.html")
+    return render(request, "index.html")
 
 
 def Upload(request):
     if request.method =='POST':
-        if request.POST['count']:
+
+        '''if request.POST['count']:
             count = int(request.POST['count'])
         else:
             count = 10
@@ -37,15 +38,17 @@ def Upload(request):
             brightness = float(request.POST['zoom'])/100
         else:
             brightness = 0
-        #print(request.POST['hflip'])
-        # if request.POST["hflip"]:
-        #     h_flip = True
-        # else:
-        #     h_flip = False
-        # if request.POST['vflip']:
-        #     v_flip = True
-        # else:
-        #     v_flip = False
+        print(request.POST['hflip'])
+        if request.POST["hflip"]:
+            h_flip = True
+        else:
+            h_flip = False
+        if request.POST['vflip']:
+            v_flip = True
+        else:
+            v_flip = False'''
+
+
         path = request.POST['path']
         xmin = int(request.POST['xmin'])
         ymin = int(request.POST['ymin'])
