@@ -18,4 +18,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", hello.views.index, name="index"),
     path("upload", hello.views.Upload, name="index"),
+    path("multiImage", hello.views.Multi_Images, name="multiImage"),
 ]

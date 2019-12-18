@@ -1,10 +1,44 @@
 from django.shortcuts import render
 from django.core.files.storage import FileSystemStorage
 
+import shutil 
+
 from .data_augmentation import image_augmentation
+
 # Create your views here.
 def index(request):
-    return render(request, "index.html")
+    return render(request, "multiImages.html")
+
+def Multi_Images(request):
+    if request.method =='POST':
+
+        path = request.POST['path']
+        xmin = int(request.POST['xmin'])
+        ymin = int(request.POST['ymin'])
+        xmax = int(request.POST['xmax'])
+        ymax = int(request.POST['ymax'])
+        label = request.POST['label']
+        annotation_list = [[xmin,ymin,xmax,ymax,label]]
+        
+        fs = FileSystemStorage()
+        uploaded_image_url = []
+        uploaded_background_url = []
+
+        for image in request.FILES.getlist('image'):
+            filename = fs.save(image.name, image)
+            uploaded_image_url.append(fs.url(filename))
+
+        for image in request.FILES.getlist('background'):
+            filename = fs.save(image.name, image)
+            uploaded_background_url.append(fs.url(filename))
+
+    #     input_data_path = "./media"
+    #     image_url = input_data_path+"/"+str(image.name)
+    #     background_url = input_data_path+"/"+str(background.name)
+        
+    #     image_augmentation(image_url,background_url,annotation_list,path)
+    shutil.rmtree("./media")
+    return render(request,"home.html")
 
 
 def Upload(request):
@@ -70,5 +104,5 @@ def Upload(request):
         background_url = input_data_path+"/"+str(background.name)
         
         image_augmentation(image_url,background_url,annotation_list,path)
-
+    shutil.rmtree("./media")
     return render(request,"home.html")
