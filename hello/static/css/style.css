@@ -4,10 +4,6 @@ body {
 
 canvas {
   display: block;
-  position: absolute;
-  margin-top: auto;
-  margin-left: auto;
-  margin-right: auto;
 }
 .content {
     position: absolute;
