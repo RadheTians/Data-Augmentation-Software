@@ -1,19 +1,15 @@
 let xmin=0,ymin=0,xmax=0,ymax=0;
-let xbox,ybox;
+let xbox=0,ybox=0;
 let flag=0;
 let reader = [];
+let annotation_list = [];
+let annot = [];
 let a=0;
-let left;
-let right;
 function setup() {
+
     var canvas = createCanvas(1000, 1000);
     canvas.doubleClicked(setXY);
-    left = createButton('Left');
-    left.position(300, 290);
-    left.mousePressed(leftChange);
-    right = createButton('Right');
-    right.position(500, 319);
-    right.mousePressed(rightChange);
+   
 }
 
 function draw() {
@@ -28,7 +24,6 @@ function draw() {
         c = color('hsla(160, 100%, 50%, 0)');
         fill(c);
         rect(xmin,ymin,xbox,ybox);
-        
     }
 }
 
@@ -65,9 +60,49 @@ function setXY(){
 }
 
 function leftChange(){
-    a--;
+    if(0 < a){
+        annot = [];
+        append(annot,xmin);
+        append(annot,ymin);
+        append(annot,xmax);
+        append(annot,ymax);
+        var label = document.getElementById("label").value;
+        document.getElementById("label").value = "";
+        append(annot,label);
+        a = a-1;
+        flag = 0;
+        xmin = 0;
+        ymin = 0;
+        xmax = 0;
+        ymax = 0;
+        xbox = 0;
+        ybox = 0;
+        append(annotation_list,annot);
+
+    }
+
 }
 
 function rightChange(){
-    a++;
+
+    if(a+1 <reader.length){
+        annot = [];
+        append(annot,xmin);
+        append(annot,ymin);
+        append(annot,xmax);
+        append(annot,ymax);
+        var label = document.getElementById("label").value;
+        document.getElementById("label").value = "";
+        append(annot,label);
+        a = a+1;
+        flag = 0;
+        xmin = 0;
+        ymin = 0;
+        xmax = 0;
+        ymax = 0;
+        xbox = 0;
+        ybox = 0;
+        append(annotation_list,annot);
+    }
+    
 }

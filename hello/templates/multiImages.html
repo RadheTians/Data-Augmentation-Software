@@ -147,11 +147,14 @@
 						Y Min: <input type="number" id="ymin" name="ymin" class="gn-search">
 						X Max: <input type="number" id="xmax" name="xmax" class="gn-search">
 						Y Max: <input type="number" id="ymax" name="ymax" class="gn-search">
+						LABEL: <input type="text" id="label" name="label" class="gn-search">
 					</ul>
 					<ul>	
 						IMAGE: <input type="file" id="image" name="image" onchange="readImageURL(this);" webkitdirectory mozdirectory>
 						BACKGROUND: <input type="file" name="background" webkitdirectory mozdirectory>
-						LABEL: <input type="text" id="label" name="label" class="gn-search">
+						<input type="button" value="LEFT" onclick="leftChange()">
+						<input type="button" value="RIGHT" onclick="rightChange()">
+						
 						
 					</ul>
 					<ul>
