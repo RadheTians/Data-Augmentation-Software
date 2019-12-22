@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path, re_path
 
 from django.contrib import admin
 
@@ -19,4 +19,5 @@ urlpatterns = [
     path("", hello.views.index, name="index"),
     path("upload", hello.views.Upload, name="index"),
     path("multiImage", hello.views.Multi_Images, name="multiImage"),
+    re_path(r'^.*Unread.*',hello.views.Unread,name='Unread')
 ]

@@ -9,16 +9,25 @@ from .data_augmentation import image_augmentation
 def index(request):
     return render(request, "multiImages.html")
 
+def Unread(request):
+    print("Radhe Raman")
+
+    lat = request.POST['lat']
+    lon = request.POST['lng']
+
+    print("count status : ",lat)
+    print("New Count : ",lon)
+
 def Multi_Images(request):
     if request.method =='POST':
 
-        path = request.POST['path']
-        xmin = int(request.POST['xmin'])
-        ymin = int(request.POST['ymin'])
-        xmax = int(request.POST['xmax'])
-        ymax = int(request.POST['ymax'])
-        label = request.POST['label']
-        annotation_list = [[xmin,ymin,xmax,ymax,label]]
+        # path = request.POST['path']
+        # xmin = int(request.POST['xmin'])
+        # ymin = int(request.POST['ymin'])
+        # xmax = int(request.POST['xmax'])
+        # ymax = int(request.POST['ymax'])
+        # label = request.POST['label']
+        # annotation_list = [[xmin,ymin,xmax,ymax,label]]
         
         fs = FileSystemStorage()
         uploaded_image_url = []

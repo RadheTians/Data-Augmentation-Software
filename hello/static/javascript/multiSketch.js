@@ -5,6 +5,8 @@ let reader = [];
 let annotation_list = [];
 let annot = [];
 let a=0;
+
+
 function setup() {
 
     var canvas = createCanvas(1000, 1000);
@@ -105,4 +107,15 @@ function rightChange(){
         append(annotation_list,annot);
     }
     
+}
+
+function Unread(){
+
+    print("First Called");
+    var abc = "{% url 'Unread' %}";
+    var data = {'lat': "Radhe", 'lng': "Raman", csrfmiddlewaretoken : '{{ csrf_token }}'};
+    print("Second");
+    $.post(abc, data);
+    print("Third");
+
 }
