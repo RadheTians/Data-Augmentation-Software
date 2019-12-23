@@ -50,11 +50,14 @@ def Multi_Images(request):
         # print(uploaded_background_url)
         # print(uploaded_image_url)
         print(annotation)
-        # for background_url in uploaded_background_url:
-        #     i = 0 
-        #     for image_url in uploaded_image_url:
-        #         image_augmentation(image_url,background_url,annotation[i],path)
-        #         i+=1
+        for background_url in uploaded_background_url:
+            i = 0 
+            for image_url in uploaded_image_url:
+                print(image_url)
+                print(annotation[i])
+             
+                image_augmentation(image_url,background_url,annotation[i],path)
+                i+=1
 
     #     input_data_path = "./media"
     #     image_url = input_data_path+"/"+str(image.name)

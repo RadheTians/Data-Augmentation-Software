@@ -82,7 +82,7 @@ function leftChange(){
 
 function rightChange(){
 
-    if(a <reader.length){
+    if(a < reader.length){
 
         var label = document.getElementById("label").value;
         document.getElementById("label").value = "";
