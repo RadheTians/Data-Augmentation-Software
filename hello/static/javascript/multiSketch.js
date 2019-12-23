@@ -3,7 +3,6 @@ let xbox=0,ybox=0;
 let flag=0;
 let reader = [];
 var annotation_list = [];
-let annot;
 let a=0;
 
 
@@ -65,7 +64,8 @@ function leftChange(){
     if(0 < a){
         var label = document.getElementById("label").value;
         document.getElementById("label").value = "";
-        annot = {"xmin" : xmin, "ymin" : ymin, "xmax" : xmax, "ymax" : ymax, "label" : label, csrfmiddlewaretoken : csrftoken};
+        var annot = {"xmin" : xmin, "ymin" : ymin, "xmax" : xmax, "ymax" : ymax, "label" : label, csrfmiddlewaretoken : csrftoken};
+        //append(annotation_list,annot);
         a = a-1;
         flag = 0;
         xmin = 0;
@@ -74,7 +74,7 @@ function leftChange(){
         ymax = 0;
         xbox = 0;
         ybox = 0;
-        append(annotation_list,annot);
+        
 
     }
 
@@ -82,11 +82,13 @@ function leftChange(){
 
 function rightChange(){
 
-    if(a+1 <reader.length){
+    if(a <reader.length){
 
         var label = document.getElementById("label").value;
         document.getElementById("label").value = "";
-        annot = {"xmin" : xmin, "ymin" : ymin, "xmax" : xmax, "ymax" : ymax, "label" : label, csrfmiddlewaretoken : csrftoken};
+        var annot = {"xmin" : xmin, "ymin" : ymin, "xmax" : xmax, "ymax" : ymax, "label" : label, csrfmiddlewaretoken : csrftoken};
+        $.post("{% url 'Unread' %}", annot);
+        //append(annotation_list,annot);
         a = a+1;
         flag = 0;
         xmin = 0;
@@ -95,18 +97,18 @@ function rightChange(){
         ymax = 0;
         xbox = 0;
         ybox = 0;
-        append(annotation_list,annot);
+    
     }
     
 }
 
 function Unread(){
 
-    print(annot);
+    print(annotation_list);
 
-    var abc = "{% url 'Unread' %}";
-    var data = {"lat" : annot, 'lng': "Raman", csrfmiddlewaretoken : csrftoken};
-    $.post(abc, annot);
+    var url = "{% url 'Unread' %}";
+    var data = {"data" : annotation_list, csrfmiddlewaretoken : csrftoken};
+    $.post(url, data);
     print("Thirdnumber");
 
 }

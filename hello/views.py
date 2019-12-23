@@ -6,24 +6,29 @@ import shutil
 from .data_augmentation import image_augmentation
 
 # Create your views here.
+
+annotation = []
+
 def index(request):
     return render(request, "multiImages.html")
 
 def Unread(request):
-    print("Radhe Raman")
+    try:
+        xmin = int(request.POST['xmin'])
+        ymin = int(request.POST['ymin'])
+        xmax = int(request.POST['xmax'])
+        ymax = int(request.POST['ymax'])
+        label = request.POST['label']
+        annotation.append([[xmin,ymin,xmax,ymax,label]])
+        print(annotation)
+    except Exception as e:
+        print(e)
 
-    lat = request.POST.get('xmin')
-    lng =  request.POST.get('ymax')
-    print(lng)
-    for i in lat:
-        print(i)
-
-    print("count status : ",lat)
 
 def Multi_Images(request):
     if request.method =='POST':
 
-        # path = request.POST['path']
+        path = request.POST['path']
         # xmin = int(request.POST['xmin'])
         # ymin = int(request.POST['ymin'])
         # xmax = int(request.POST['xmax'])
@@ -42,6 +47,14 @@ def Multi_Images(request):
         for image in request.FILES.getlist('background'):
             filename = fs.save(image.name, image)
             uploaded_background_url.append(fs.url(filename))
+        # print(uploaded_background_url)
+        # print(uploaded_image_url)
+        print(annotation)
+        # for background_url in uploaded_background_url:
+        #     i = 0 
+        #     for image_url in uploaded_image_url:
+        #         image_augmentation(image_url,background_url,annotation[i],path)
+        #         i+=1
 
     #     input_data_path = "./media"
     #     image_url = input_data_path+"/"+str(image.name)
