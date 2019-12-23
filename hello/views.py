@@ -12,11 +12,13 @@ def index(request):
 def Unread(request):
     print("Radhe Raman")
 
-    lat = request.POST['lat']
-    lon = request.POST['lng']
+    lat = request.POST.get('xmin')
+    lng =  request.POST.get('ymax')
+    print(lng)
+    for i in lat:
+        print(i)
 
     print("count status : ",lat)
-    print("New Count : ",lon)
 
 def Multi_Images(request):
     if request.method =='POST':

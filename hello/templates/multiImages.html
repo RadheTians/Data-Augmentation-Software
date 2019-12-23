@@ -139,7 +139,7 @@
 				
 			</ul>
 			<header>
-				<form action="multiImage" method="POST" enctype="multipart/form-data">
+				<form method="POST" enctype="multipart/form-data">
 					{% csrf_token %}
 					<ul class="label">
 						X Min: <input type="number" id="xmin" name="xmin" class="gn-search">
@@ -151,7 +151,7 @@
 					<ul>	
 						IMAGE: <input type="file" id="image" name="image" onchange="readImageURL(this);" webkitdirectory mozdirectory>
 						BACKGROUND: <input type="file" name="background" webkitdirectory mozdirectory>
-						<input type="button" value="LEFT" onclick="leftChange()">
+						<input type="button" value="LEFT" onclick="return Unread();">
 						<input type="button" value="RIGHT" onclick="rightChange()">
 						
 						
@@ -165,6 +165,7 @@
 		</div>
 		
 		<script>
+			var csrftoken = '{{ csrf_token }}';
 			new gnMenu( document.getElementById( 'gn-menu' ) );
 		</script>
 	</body>

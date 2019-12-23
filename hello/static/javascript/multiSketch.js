@@ -2,8 +2,8 @@ let xmin=0,ymin=0,xmax=0,ymax=0;
 let xbox=0,ybox=0;
 let flag=0;
 let reader = [];
-let annotation_list = [];
-let annot = [];
+var annotation_list = [];
+let annot;
 let a=0;
 
 
@@ -63,14 +63,9 @@ function setXY(){
 
 function leftChange(){
     if(0 < a){
-        annot = [];
-        append(annot,xmin);
-        append(annot,ymin);
-        append(annot,xmax);
-        append(annot,ymax);
         var label = document.getElementById("label").value;
         document.getElementById("label").value = "";
-        append(annot,label);
+        annot = {"xmin" : xmin, "ymin" : ymin, "xmax" : xmax, "ymax" : ymax, "label" : label, csrfmiddlewaretoken : csrftoken};
         a = a-1;
         flag = 0;
         xmin = 0;
@@ -88,14 +83,10 @@ function leftChange(){
 function rightChange(){
 
     if(a+1 <reader.length){
-        annot = [];
-        append(annot,xmin);
-        append(annot,ymin);
-        append(annot,xmax);
-        append(annot,ymax);
+
         var label = document.getElementById("label").value;
         document.getElementById("label").value = "";
-        append(annot,label);
+        annot = {"xmin" : xmin, "ymin" : ymin, "xmax" : xmax, "ymax" : ymax, "label" : label, csrfmiddlewaretoken : csrftoken};
         a = a+1;
         flag = 0;
         xmin = 0;
@@ -111,11 +102,11 @@ function rightChange(){
 
 function Unread(){
 
-    print("First Called");
+    print(annot);
+
     var abc = "{% url 'Unread' %}";
-    var data = {'lat': "Radhe", 'lng': "Raman", csrfmiddlewaretoken : '{{ csrf_token }}'};
-    print("Second");
-    $.post(abc, data);
-    print("Third");
+    var data = {"lat" : annot, 'lng': "Raman", csrfmiddlewaretoken : csrftoken};
+    $.post(abc, annot);
+    print("Thirdnumber");
 
 }
