@@ -20,7 +20,6 @@ def Unread(request):
         ymax = int(request.POST['ymax'])
         label = request.POST['label']
         annotation.append([[xmin,ymin,xmax,ymax,label]])
-        print(annotation)
     except Exception as e:
         print(e)
 
@@ -49,13 +48,10 @@ def Multi_Images(request):
             uploaded_background_url.append(fs.url(filename))
         # print(uploaded_background_url)
         # print(uploaded_image_url)
-        print(annotation)
+        # print(annotation)
         for background_url in uploaded_background_url:
             i = 0 
             for image_url in uploaded_image_url:
-                print(image_url)
-                print(annotation[i])
-             
                 image_augmentation(image_url,background_url,annotation[i],path)
                 i+=1
 
@@ -64,7 +60,7 @@ def Multi_Images(request):
     #     background_url = input_data_path+"/"+str(background.name)
         
     #     image_augmentation(image_url,background_url,annotation_list,path)
-    shutil.rmtree("./media")
+    # shutil.rmtree("./media")
     return render(request,"home.html")
 
 

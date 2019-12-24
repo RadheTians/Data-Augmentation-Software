@@ -3,6 +3,7 @@ import numpy as np
 
 from .image_to_xml import create_labimg_xml
 
+file_name = []
 def image_augmentation(image_url, background_url,annotation_list,path):
     raw_image = Data_augmentation(image_url,background_url,annotation_list)
     raw_image.image_augment(path,annotation_list[0])
@@ -12,10 +13,14 @@ def image_augmentation(image_url, background_url,annotation_list,path):
 class Data_augmentation:
 
     def __init__(self, image_url, background_url,annotation_list):
-
-        self.name_int = 1
-        self.image = cv2.imread(image_url)
-        self.background = cv2.imread(background_url)
+        self.length = len(file_name) 
+        if self.length == 0:
+            self.name_int = 1
+            file_name.append(self.name_int)
+        else:
+            self.name_int = file_name[self.length-1]
+        self.image = cv2.imread("."+image_url)
+        self.background = cv2.imread("."+background_url)
         self.anotation_list = annotation_list
         for annot in annotation_list:
             self.image = self.image[annot[1]:annot[3],annot[0]:annot[2]]
@@ -86,8 +91,8 @@ class Data_augmentation:
                     self.XY_rotate(save_path,img_rot,bkg,i,j,label)
                     # self.XY_rotate(save_path,img_color,bkg,i,j,label)
                 except Exception as identifier:
-                    print(identifier)
+                    # print(identifier)
                     pass
-           
+        file_name.append(self.name_int)
     
     
