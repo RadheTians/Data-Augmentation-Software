@@ -2,8 +2,10 @@ body {
     background: rgb(243, 82, 82);
 }
 
-canvas {
+.center {
   display: block;
+  margin: auto;
+  padding: 10px
 }
 .content {
     position: absolute;

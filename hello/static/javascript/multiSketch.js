@@ -8,21 +8,25 @@ let a=0;
 
 function setup() {
 
-    var canvas = createCanvas(1000, 1000);
+    var canvas = createCanvas(700, 700);
+    canvas.class("center");
     canvas.doubleClicked(setXY);
+        
+
    
 }
 
 function draw() {
-    
-    if(reader.length != 0 && 0 <= a < reader.length){
+    // print(reader.length);
+    if(reader.length != 0 && 0 <= a && a < reader.length){
         clear();
+        // print(a);
         image(reader[a], 0,0);
     }
     if(xmin!=0 && ymin!=0 && xmax!=0 && ymax!=0){
         document.getElementById("xmax").value = xmax;
         document.getElementById("ymax").value = ymax;
-        c = color('hsla(160, 100%, 50%, 0)');
+        c = color('hsla(200, 100%, 50%, 0)');
         fill(c);
         rect(xmin,ymin,xbox,ybox);
     }
@@ -38,15 +42,15 @@ function readImageURL(input) {
   
 }
 
-function doubleClicked() {
+// function doubleClicked() {
 
-    if(flag==1){
-        xmax = mouseX;
-        ymax = mouseY;
-        xbox = mouseX-xmin;
-        ybox = mouseY-ymin;
-    }
-}
+//     if(flag==1){
+//         xmax = mouseX;
+//         ymax = mouseY;
+//         xbox = mouseX-xmin;
+//         ybox = mouseY-ymin;
+//     }
+// }
 
 function setXY(){
 
@@ -56,6 +60,11 @@ function setXY(){
         ymin = mouseY;
         document.getElementById("xmin").value = xmin;
         document.getElementById("ymin").value = ymin;
+    } else {
+        xmax = mouseX;
+        ymax = mouseY;
+        xbox = mouseX-xmin;
+        ybox = mouseY-ymin;
     }
 
 }
