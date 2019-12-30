@@ -47,23 +47,23 @@ def Multi_Images(request):
         if request.POST['min-width']:
             min_width = int(request.POST['min-width'])/100
         else:
-            min_width = 0
+            min_width = 20
         
 
         if request.POST['max-width']:
             max_width = int(request.POST['max-width'])/100
         else:
-            max_width = 0
+            max_width = 101
 
         if request.POST['min-height']:
             min_height = int(request.POST['min-height'])/100
         else:
-            min_height = 0
+            min_height = 20
 
         if request.POST['max-height']:
             max_height = int(request.POST['max-height'])/100
         else:
-            max_height = 0 
+            max_height = 181 
 
         if request.POST['min-shear']:
             min_shear = int(request.POST['min-shear'])/100
@@ -107,29 +107,29 @@ def Multi_Images(request):
 
         path = request.POST['path']
        
-        print(h_flip,v_flip)
-        # fs = FileSystemStorage()
-        # uploaded_image_url = []
-        # uploaded_background_url = []
+        # print(h_flip,v_flip)
+        fs = FileSystemStorage()
+        uploaded_image_url = []
+        uploaded_background_url = []
 
-        # for image in request.FILES.getlist('image'):
-        #     filename = fs.save(image.name, image)
-        #     uploaded_image_url.append(fs.url(filename))
+        for image in request.FILES.getlist('image'):
+            filename = fs.save(image.name, image)
+            uploaded_image_url.append(fs.url(filename))
 
-        # for image in request.FILES.getlist('background'):
-        #     filename = fs.save(image.name, image)
-        #     uploaded_background_url.append(fs.url(filename))
+        for image in request.FILES.getlist('background'):
+            filename = fs.save(image.name, image)
+            uploaded_background_url.append(fs.url(filename))
         
-        # for background_url in uploaded_background_url:
-        #     i = 0 
-        #     for image_url in uploaded_image_url:
-        #         image_augmentation(image_url,background_url,annotation[i],path,
-        #                               count, min_rotate, max_rotate, min_width, max_width,
-        #                               min_height, max_height, min_shear, max_shear, min_zoom,
-        #                               max_zoom, min_bright, max_bright, h_flip,v_flip)
-        #         i+=1
+        for background_url in uploaded_background_url:
+            i = 0 
+            for image_url in uploaded_image_url:
+                image_augmentation(image_url,background_url,annotation[i],path,
+                                      count, min_rotate, max_rotate, min_width, max_width,
+                                      min_height, max_height, min_shear, max_shear, min_zoom,
+                                      max_zoom, min_bright, max_bright, h_flip,v_flip)
+                i+=1
 
-    # shutil.rmtree("./media")
+    shutil.rmtree("./media")
     return render(request,"home.html")
 
 

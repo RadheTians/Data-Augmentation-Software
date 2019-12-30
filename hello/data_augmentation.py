@@ -8,11 +8,13 @@ def image_augmentation(image_url, background_url,annotation_list,path,
                         count, min_rotate, max_rotate, min_width, max_width,
                         min_height, max_height, min_shear, max_shear, min_zoom,
                         max_zoom, min_bright, max_bright, h_flip,v_flip):
+
     raw_image = Data_augmentation(image_url,background_url,annotation_list)
+
     raw_image.getter(count, min_rotate, max_rotate, min_width, max_width,
                 min_height, max_height, min_shear, max_shear, min_zoom,
                 max_zoom, min_bright, max_bright, h_flip,v_flip)
-                
+
     raw_image.image_augment(path,annotation_list[0])
     
     
@@ -90,7 +92,8 @@ class Data_augmentation:
         return background
 
     def XY_rotate(self,save_path,image,background,x,y,label):
-
+        if self.count == self.name_int:
+            return
         for i in range(20,161,20):
             bkg = background.copy()
             img = image.copy()
@@ -102,22 +105,26 @@ class Data_augmentation:
 
     def image_augment(self, save_path,annotation_list): 
 
-        img = self.image.copy()
-        img_vflip = self.flip(img, vflip=True, hflip=False)
-        img = self.image.copy()
-        img_hflip = self.flip(img, vflip=False, hflip=True)
+        if self.v_flip:
+            img = self.image.copy()
+            img_vflip = self.flip(img, vflip=True, hflip=False)
+        if self.h_flip:
+            img = self.image.copy()
+            img_hflip = self.flip(img, vflip=False, hflip=True)
         img = self.image.copy()
         img_rot = self.rotate(img)
         # img = self.image.copy()
         # img_color = self.color(img)
         label = annotation_list[4]
-        for j in range(20,181,80):
-            for i in range(20,101,20):
+        for j in range(self.min_height,self.max_height,80):
+            for i in range(self.min_width,self.max_width,20):
                 try:
                     bkg = self.background.copy()
                     self.XY_rotate(save_path,img,bkg,i,j,label)
-                    self.XY_rotate(save_path,img_vflip,bkg,i,j,label)
-                    self.XY_rotate(save_path,img_hflip ,bkg,i,j,label)
+                    if self.v_flip:
+                        self.XY_rotate(save_path,img_vflip,bkg,i,j,label)
+                    if self.h_flip:
+                        self.XY_rotate(save_path,img_hflip ,bkg,i,j,label)
                     self.XY_rotate(save_path,img_rot,bkg,i,j,label)
                     # self.XY_rotate(save_path,img_color,bkg,i,j,label)
                 except Exception as identifier:
