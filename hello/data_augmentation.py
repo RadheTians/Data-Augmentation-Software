@@ -25,6 +25,7 @@ class Data_augmentation:
         for annot in annotation_list:
             self.image = self.image[annot[1]:annot[3],annot[0]:annot[2]]
         self.background = cv2.resize(self.background , (600, 600)) 
+        
     def rotate(self, image, angle=90, scale=1.0):
         w = image.shape[1]
         h = image.shape[0]
@@ -50,6 +51,7 @@ class Data_augmentation:
         black_mask = cv2.inRange(image, lower_black, upper_black)
         print("Shape of  black_mask: ",black_mask.shape)
         return black_mask
+
     def image_coordinated(self,image,background,X_shift=20,Y_shift=20):
         
         for i in range(image.shape[0]):

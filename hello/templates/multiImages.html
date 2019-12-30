@@ -25,7 +25,9 @@
 		<script src="{% static 'javascript/multiSketch.js' %}"></script>
 	</head>
 	<body>
+		<form action="multiImage" method="POST" enctype="multipart/form-data">
 		<div class="container">
+			
 			<ul id="gn-menu" class="gn-menu-main">
 				<li class="gn-trigger">
 					<a class="gn-icon gn-icon-menu"><span>Menu</span></a>
@@ -33,19 +35,18 @@
 						<div class="gn-scroller">
 							<ul class="gn-menu">
 								<li class="gn-search-item">
-									<input placeholder="Number of Images" type="number" class="gn-search">
-									<a class="gn-icon gn-icon-search"><span>Number of Images</span></a>
+									<input placeholder="Number of Images" type="number" name="count" class="gn-search">
 								</li>
 								<li>
 									<a class="gn-icon gn-icon-download">Rotation Range</a>
 									<ul class="gn-submenu">
 										<li class="gn-search-item">
-											<input placeholder="Minimum" type="number" class="gn-search">
-											<a class="gn-icon gn-icon-search"><span>Minimum</span></a>
+											<input placeholder="Minimum" type="number" name="min-rotate" class="gn-search">
+									
 										</li>
 										<li class="gn-search-item">
-											<input placeholder="Maximum" type="number" class="gn-search">
-											<a class="gn-icon gn-icon-search"><span>Maximum</span></a>
+											<input placeholder="Maximum" type="number" name="max-rotate" class="gn-search">
+											
 										</li>
 									</ul>
 								</li>
@@ -53,12 +54,12 @@
 									<a class="gn-icon gn-icon-download">Width Shift Range</a>
 									<ul class="gn-submenu">
 										<li class="gn-search-item">
-											<input placeholder="Minimum" type="number" class="gn-search">
-											<a class="gn-icon gn-icon-search"><span>Minimum</span></a>
+											<input placeholder="Minimum" type="number" name="min-width" class="gn-search">
+											
 										</li>
 										<li class="gn-search-item">
-											<input placeholder="Maximum" type="number" class="gn-search">
-											<a class="gn-icon gn-icon-search"><span>Maximum</span></a>
+											<input placeholder="Maximum" type="number" name="max-width" class="gn-search">
+									
 										</li>
 									</ul>
 								</li>
@@ -66,12 +67,12 @@
 									<a class="gn-icon gn-icon-download">Height Shift Range</a>
 									<ul class="gn-submenu">
 										<li class="gn-search-item">
-											<input placeholder="Minimum" type="number" class="gn-search">
-											<a class="gn-icon gn-icon-search"><span>Minimum</span></a>
+											<input placeholder="Minimum" type="number" name="min-height" class="gn-search">
+										
 										</li>
 										<li class="gn-search-item">
-											<input placeholder="Maximum" type="number" class="gn-search">
-											<a class="gn-icon gn-icon-search"><span>Maximum</span></a>
+											<input placeholder="Maximum" type="number" name="max-height" class="gn-search">
+											
 										</li>
 									</ul>
 								</li>
@@ -79,12 +80,12 @@
 									<a class="gn-icon gn-icon-download">Shear Range</a>
 									<ul class="gn-submenu">
 										<li class="gn-search-item">
-											<input placeholder="Minimum" type="number" class="gn-search">
-											<a class="gn-icon gn-icon-search"><span>Minimum</span></a>
+											<input placeholder="Minimum" type="number" name="min-shear" class="gn-search">
+											
 										</li>
 										<li class="gn-search-item">
-											<input placeholder="Maximum" type="number" class="gn-search">
-											<a class="gn-icon gn-icon-search"><span>Maximum</span></a>
+											<input placeholder="Maximum" type="number" name="max-shear" class="gn-search">
+											
 										</li>
 									</ul>
 								</li>
@@ -92,12 +93,12 @@
 									<a class="gn-icon gn-icon-download">Zoom Range</a>
 									<ul class="gn-submenu">
 										<li class="gn-search-item">
-											<input placeholder="Minimum" type="number" class="gn-search">
-											<a class="gn-icon gn-icon-search"><span>Minimum</span></a>
+											<input placeholder="Minimum" type="number" name="min-zoom" class="gn-search">
+									
 										</li>
 										<li class="gn-search-item">
-											<input placeholder="Maximum" type="number" class="gn-search">
-											<a class="gn-icon gn-icon-search"><span>Maximum</span></a>
+											<input placeholder="Maximum" type="number" name="max-zoom" class="gn-search">
+									
 										</li>
 									</ul>
 								</li>
@@ -105,12 +106,12 @@
 									<a class="gn-icon gn-icon-download">Brightness Range</a>
 									<ul class="gn-submenu">
 										<li class="gn-search-item">
-											<input placeholder="Minimum" type="number" class="gn-search">
-											<a class="gn-icon gn-icon-search"><span>Minimum</span></a>
+											<input placeholder="Minimum" type="number" name="min-bright" class="gn-search">
+											
 										</li>
 										<li class="gn-search-item">
-											<input placeholder="Maximum" type="number" class="gn-search">
-											<a class="gn-icon gn-icon-search"><span>Maximum</span></a>
+											<input placeholder="Maximum" type="number" name="max-bright" class="gn-search">
+											
 										</li>
 									</ul>
 								</li>
@@ -119,7 +120,7 @@
 									<a class="gn-icon gn-icon-download">Horizontal Flip</a>
 									<ul class="gn-submenu">
 										<li class="gn-search-item">
-											<input type="checkbox" name="hflip" class="gn-search">
+											<input placeholder="type 1" type="number" name="hflip" class="gn-search">
 										</li>
 										
 									</ul>
@@ -128,7 +129,7 @@
 									<a class="gn-icon gn-icon-download">Vertical Flip</a>
 									<ul class="gn-submenu">
 										<li class="gn-search-item">
-											<input type="checkbox" name="vflip" class="gn-search">
+											<input placeholder="type 1" type="number" name="vflip" class="gn-search">
 										</li>
 									</ul>
 								</li>
@@ -139,7 +140,7 @@
 				
 			</ul>
 			<header>
-				<form action="multiImage" method="POST" enctype="multipart/form-data">
+				
 					{% csrf_token %}
 					<ul class="label">
 						X Min: <input type="number" id="xmin" name="xmin" class="gn-search">
@@ -160,9 +161,11 @@
 						PATH: <input type="text" id="path" name="path" class="gn-search">
 						<input type="submit" value="Submit">
 					</ul>
-				</form>
+			
 			</header> 
+		
 		</div>
+		</form>
 		
 		<script>
 			var csrftoken = '{{ csrf_token }}';
