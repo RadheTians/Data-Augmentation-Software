@@ -61,9 +61,9 @@ def Multi_Images(request):
             min_height = 0
 
         if request.POST['max-height']:
-            min_height = int(request.POST['max-height'])/100
+            max_height = int(request.POST['max-height'])/100
         else:
-            min_height = 0 
+            max_height = 0 
 
         if request.POST['min-shear']:
             min_shear = int(request.POST['min-shear'])/100
@@ -123,7 +123,10 @@ def Multi_Images(request):
         # for background_url in uploaded_background_url:
         #     i = 0 
         #     for image_url in uploaded_image_url:
-        #         image_augmentation(image_url,background_url,annotation[i],path)
+        #         image_augmentation(image_url,background_url,annotation[i],path,
+        #                               count, min_rotate, max_rotate, min_width, max_width,
+        #                               min_height, max_height, min_shear, max_shear, min_zoom,
+        #                               max_zoom, min_bright, max_bright, h_flip,v_flip)
         #         i+=1
 
     # shutil.rmtree("./media")

@@ -4,8 +4,15 @@ import numpy as np
 from .image_to_xml import create_labimg_xml
 
 file_name = []
-def image_augmentation(image_url, background_url,annotation_list,path):
+def image_augmentation(image_url, background_url,annotation_list,path, 
+                        count, min_rotate, max_rotate, min_width, max_width,
+                        min_height, max_height, min_shear, max_shear, min_zoom,
+                        max_zoom, min_bright, max_bright, h_flip,v_flip):
     raw_image = Data_augmentation(image_url,background_url,annotation_list)
+    raw_image.getter(count, min_rotate, max_rotate, min_width, max_width,
+                min_height, max_height, min_shear, max_shear, min_zoom,
+                max_zoom, min_bright, max_bright, h_flip,v_flip)
+                
     raw_image.image_augment(path,annotation_list[0])
     
     
@@ -25,7 +32,28 @@ class Data_augmentation:
         for annot in annotation_list:
             self.image = self.image[annot[1]:annot[3],annot[0]:annot[2]]
         self.background = cv2.resize(self.background , (600, 600)) 
-        
+    
+    def getter(self, count, min_rotate, max_rotate, min_width, max_width,
+                min_height, max_height, min_shear, max_shear, min_zoom,
+                max_zoom, min_bright, max_bright, h_flip,v_flip):
+
+        self.count = count
+        self.min_rotate = min_rotate
+        self.max_rotate = max_rotate
+        self.min_width = min_width
+        self.max_width = max_width
+        self.min_height = min_height
+        self.max_height = max_height
+        self.min_shear = min_shear
+        self.max_shear = max_shear
+        self.min_zoom = min_zoom
+        self.max_zoom = max_zoom
+        self.min_bright = min_bright
+        self.max_bright = max_bright
+        self.h_flip = h_flip
+        self.v_flip = v_flip
+
+
     def rotate(self, image, angle=90, scale=1.0):
         w = image.shape[1]
         h = image.shape[0]
