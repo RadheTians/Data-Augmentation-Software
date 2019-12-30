@@ -45,23 +45,23 @@ def Multi_Images(request):
             max_rotate = 0
 
         if request.POST['min-width']:
-            min_width = int(request.POST['min-width'])/100
+            min_width = int(request.POST['min-width'])
         else:
             min_width = 20
         
 
         if request.POST['max-width']:
-            max_width = int(request.POST['max-width'])/100
+            max_width = int(request.POST['max-width'])
         else:
             max_width = 101
 
         if request.POST['min-height']:
-            min_height = int(request.POST['min-height'])/100
+            min_height = int(request.POST['min-height'])
         else:
             min_height = 20
 
         if request.POST['max-height']:
-            max_height = int(request.POST['max-height'])/100
+            max_height = int(request.POST['max-height'])
         else:
             max_height = 181 
 
@@ -86,14 +86,14 @@ def Multi_Images(request):
             max_zoom = 0 
 
         if request.POST['min-bright']:
-            min_bright = float(request.POST['min-bright'])/100
+            min_bright = float(request.POST['min-bright'])
         else:
-            min_bright = 0
+            min_bright = 20
 
         if request.POST['max-bright']:
-            max_bright = float(request.POST['max-bright'])/100
+            max_bright = float(request.POST['max-bright'])
         else:
-            max_bright = 0    
+            max_bright = 30    
 
         if request.POST["hflip"]:
             h_flip = True

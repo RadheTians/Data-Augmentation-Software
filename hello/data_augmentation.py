@@ -75,6 +75,18 @@ class Data_augmentation:
             image = cv2.flip(image, flipCode=c)
         return image 
 
+    def brightness(self, image, b_min, b_max):
+        hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+        h, s, v = cv2.split(hsv)
+
+        lim = 255 - b_min
+        v[v > lim] = 255
+        v[v <= lim] += b_max
+
+        final_hsv = cv2.merge((h, s, v))
+        image = cv2.cvtColor(final_hsv, cv2.COLOR_HSV2BGR)
+        return image
+
     def color(self, image):
         lower_black = np.array([0,0,0], dtype = "uint16")
         upper_black = np.array([192,192,192], dtype = "uint16")
@@ -112,6 +124,8 @@ class Data_augmentation:
             img = self.image.copy()
             img_hflip = self.flip(img, vflip=False, hflip=True)
         img = self.image.copy()
+        img_bright = self.brightness(img,self.min_bright,self.max_bright)
+        img = self.image.copy()
         img_rot = self.rotate(img)
         # img = self.image.copy()
         # img_color = self.color(img)
@@ -126,6 +140,7 @@ class Data_augmentation:
                     if self.h_flip:
                         self.XY_rotate(save_path,img_hflip ,bkg,i,j,label)
                     self.XY_rotate(save_path,img_rot,bkg,i,j,label)
+                    self.XY_rotate(save_path,img_bright,bkg,i,j,label)
                     # self.XY_rotate(save_path,img_color,bkg,i,j,label)
                 except Exception as identifier:
                     # print(identifier)
