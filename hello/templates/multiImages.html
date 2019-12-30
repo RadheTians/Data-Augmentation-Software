@@ -34,17 +34,22 @@
 					<nav class="gn-menu-wrapper">
 						<div class="gn-scroller">
 							<ul class="gn-menu">
-								<li class="gn-search-item">
-									<input placeholder="Number of Images" type="number" name="count" class="gn-search">
+								<li>
+									<a class="gn-icon gn-icon-download">Totel Images</a>
+									<ul class="gn-submenu">
+										<li>
+											<input placeholder="Images" type="number" name="count" class="gn-search">
+										</li>
+									</ul>
 								</li>
 								<li>
 									<a class="gn-icon gn-icon-download">Rotation Range</a>
 									<ul class="gn-submenu">
-										<li class="gn-search-item">
+										<li>
 											<input placeholder="Minimum" type="number" name="min-rotate" class="gn-search">
 									
 										</li>
-										<li class="gn-search-item">
+										<li>
 											<input placeholder="Maximum" type="number" name="max-rotate" class="gn-search">
 											
 										</li>
@@ -53,11 +58,11 @@
 								<li>
 									<a class="gn-icon gn-icon-download">Width Shift Range</a>
 									<ul class="gn-submenu">
-										<li class="gn-search-item">
+										<li>
 											<input placeholder="Minimum" type="number" name="min-width" class="gn-search">
 											
 										</li>
-										<li class="gn-search-item">
+										<li>
 											<input placeholder="Maximum" type="number" name="max-width" class="gn-search">
 									
 										</li>
@@ -66,11 +71,11 @@
 								<li>
 									<a class="gn-icon gn-icon-download">Height Shift Range</a>
 									<ul class="gn-submenu">
-										<li class="gn-search-item">
+										<li>
 											<input placeholder="Minimum" type="number" name="min-height" class="gn-search">
 										
 										</li>
-										<li class="gn-search-item">
+										<li>
 											<input placeholder="Maximum" type="number" name="max-height" class="gn-search">
 											
 										</li>
@@ -79,11 +84,11 @@
 								<li>
 									<a class="gn-icon gn-icon-download">Shear Range</a>
 									<ul class="gn-submenu">
-										<li class="gn-search-item">
+										<li>
 											<input placeholder="Minimum" type="number" name="min-shear" class="gn-search">
 											
 										</li>
-										<li class="gn-search-item">
+										<li>
 											<input placeholder="Maximum" type="number" name="max-shear" class="gn-search">
 											
 										</li>
@@ -92,11 +97,11 @@
 								<li>
 									<a class="gn-icon gn-icon-download">Zoom Range</a>
 									<ul class="gn-submenu">
-										<li class="gn-search-item">
+										<li>
 											<input placeholder="Minimum" type="number" name="min-zoom" class="gn-search">
 									
 										</li>
-										<li class="gn-search-item">
+										<li>
 											<input placeholder="Maximum" type="number" name="max-zoom" class="gn-search">
 									
 										</li>
@@ -105,11 +110,11 @@
 								<li>
 									<a class="gn-icon gn-icon-download">Brightness Range</a>
 									<ul class="gn-submenu">
-										<li class="gn-search-item">
+										<li>
 											<input placeholder="Minimum" type="number" name="min-bright" class="gn-search">
 											
 										</li>
-										<li class="gn-search-item">
+										<li >
 											<input placeholder="Maximum" type="number" name="max-bright" class="gn-search">
 											
 										</li>
@@ -119,7 +124,7 @@
 								<li>
 									<a class="gn-icon gn-icon-download">Horizontal Flip</a>
 									<ul class="gn-submenu">
-										<li class="gn-search-item">
+										<li >
 											<input placeholder="type 1" type="number" name="hflip" class="gn-search">
 										</li>
 										
@@ -128,7 +133,7 @@
 								<li>
 									<a class="gn-icon gn-icon-download">Vertical Flip</a>
 									<ul class="gn-submenu">
-										<li class="gn-search-item">
+										<li >
 											<input placeholder="type 1" type="number" name="vflip" class="gn-search">
 										</li>
 									</ul>
@@ -152,14 +157,14 @@
 					<ul>	
 						IMAGE: <input type="file" id="image" name="image" onchange="readImageURL(this);" webkitdirectory mozdirectory>
 						BACKGROUND: <input type="file" name="background" webkitdirectory mozdirectory>
-						<input type="button" value="LEFT" onclick="leftChange()">
-						<input type="button" value="RIGHT" onclick="rightChange()">
+						<input type="button" value="LEFT" onclick="leftChange()" id="btn">
+						<input type="button" value="RIGHT" onclick="rightChange()" id="btn">
 						
 						
 					</ul>
 					<ul>
 						PATH: <input type="text" id="path" name="path" class="gn-search">
-						<input type="submit" value="Submit">
+						<input type="submit" value="Submit" id="btn">
 					</ul>
 			
 			</header> 

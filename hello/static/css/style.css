@@ -17,5 +17,17 @@ body {
     transform: translate(-50%, -50%);
 }
 
+#btn {
+  background-color: rgb(71, 248, 151);
+  color: white;
+  padding: 5px 10px;
+  margin: 8px 0;
+  border: rounded;
+  border-radius: 20px;
+  cursor: pointer;
+  width: 5%;
+}
 
-        
+#btn:hover {
+  opacity: 0.2;
+}      
