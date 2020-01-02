@@ -18,6 +18,7 @@ function setup() {
 
 function draw() {
     // print(reader.length);
+    // backgorund(255);
     if(reader.length != 0 && 0 <= a && a < reader.length){
         clear();
         // print(a);

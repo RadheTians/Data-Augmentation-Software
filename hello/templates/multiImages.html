@@ -43,6 +43,19 @@
 									</ul>
 								</li>
 								<li>
+									<a class="gn-icon gn-icon-download">Canvas Size</a>
+									<ul class="gn-submenu">
+										<li>
+											<input placeholder="Width" type="number" name="min-canvas" class="gn-search">
+									
+										</li>
+										<li>
+											<input placeholder="Height" type="number" name="max-canvas" class="gn-search">
+											
+										</li>
+									</ul>
+								</li>
+								<li>
 									<a class="gn-icon gn-icon-download">Rotation Range</a>
 									<ul class="gn-submenu">
 										<li>
@@ -157,14 +170,14 @@
 					<ul>	
 						IMAGE: <input type="file" id="image" name="image" onchange="readImageURL(this);" webkitdirectory mozdirectory>
 						BACKGROUND: <input type="file" name="background" webkitdirectory mozdirectory>
-						<input type="button" value="LEFT" onclick="leftChange()" id="btn">
-						<input type="button" value="RIGHT" onclick="rightChange()" id="btn">
+						<input type="button" value="LEFT" onclick="leftChange()" class="btn">
+						<input type="button" value="RIGHT" onclick="rightChange()" class="btn">
 						
 						
 					</ul>
 					<ul>
 						PATH: <input type="text" id="path" name="path" class="gn-search">
-						<input type="submit" value="Submit" id="btn">
+						<input type="submit" value="Submit" class="btn">
 					</ul>
 			
 			</header> 
